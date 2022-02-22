@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     home: MyApp(),
   ));
@@ -15,41 +15,39 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  TextEditingController controller1 = TextEditingController();
-  TextEditingController controller2 = TextEditingController();
-  int? bil1 = 0;
-  int? bil2 = 0;
-  int? hasil = 0;
+  TextEditingController t1 = TextEditingController();
+  TextEditingController t2 = TextEditingController();
+  int bil1 = 0, bil2 = 0, sum = 0;
 
   void kali() {
     setState(() {
-      bil1 = int.parse(controller1.text);
-      bil2 = int.parse(controller2.text);
-      hasil = bil1! * bil2!;
+      bil1 = int.parse(t1.text);
+      bil2 = int.parse(t2.text);
+      sum = bil1 * bil2;
     });
   }
 
   void bagi() {
     setState(() {
-      bil1 = int.parse(controller1.text);
-      bil2 = int.parse(controller2.text);
-      hasil = bil1! ~/ bil2!;
+      bil1 = int.parse(t1.text);
+      bil2 = int.parse(t2.text);
+      sum = bil1 ~/ bil2;
     });
   }
 
   void kurang() {
     setState(() {
-      bil1 = int.parse(controller1.text);
-      bil2 = int.parse(controller2.text);
-      hasil = bil1! - bil2!;
+      bil1 = int.parse(t1.text);
+      bil2 = int.parse(t2.text);
+      sum = bil1 - bil2;
     });
   }
 
   void tambah() {
     setState(() {
-      bil1 = int.parse(controller1.text);
-      bil2 = int.parse(controller2.text);
-      hasil = bil1! + bil2!;
+      bil1 = int.parse(t1.text);
+      bil2 = int.parse(t2.text);
+      sum = bil1 + bil2;
     });
   }
 
@@ -57,7 +55,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Kalkulator"),
+        title: const Text("Kalkulator"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -65,23 +63,23 @@ class _MyAppState extends State<MyApp> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: EdgeInsets.only(left: 40),
+              margin: const EdgeInsets.only(left: 40),
               child: Text(
-                "Hasil Perhitungan : $hasil ",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                "Hasil Perhitungan : $sum ",
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
               width: 20,
             ),
             Center(
               child: Container(
-                margin: EdgeInsets.only(bottom: 20, right: 20, left: 20),
+                margin: const EdgeInsets.only(bottom: 20, right: 20, left: 20),
                 width: 328,
                 height: 40,
                 child: TextField(
-                  controller: controller1,
+                  controller: t1,
                   decoration: InputDecoration(
                       fillColor: Colors.deepPurple[50],
                       filled: true,
@@ -91,17 +89,17 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
               width: 10,
             ),
             Center(
               child: Container(
-                margin: EdgeInsets.only(bottom: 20, right: 20, left: 20),
+                margin: const EdgeInsets.only(bottom: 20, right: 20, left: 20),
                 width: 328,
                 height: 40,
                 child: TextField(
-                  controller: controller2,
+                  controller: t2,
                   decoration: InputDecoration(
                     fillColor: Colors.deepPurple[50],
                     filled: true,
@@ -119,15 +117,15 @@ class _MyAppState extends State<MyApp> {
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(6)),
-                      minimumSize: Size(138, 50),
+                      minimumSize: const Size(138, 50),
                     ),
                     onPressed: () {
                       kali();
-                      controller1.clear();
-                      controller2.clear();
+                      t1.clear();
+                      t2.clear();
                     },
-                    child: Text("X")),
-                SizedBox(
+                    child: const Text("X")),
+                const SizedBox(
                   height: 42,
                   width: 42,
                 ),
@@ -135,16 +133,16 @@ class _MyAppState extends State<MyApp> {
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6)),
-                        minimumSize: Size(138, 50)),
+                        minimumSize: const Size(138, 50)),
                     onPressed: () {
                       bagi();
-                      controller1.clear();
-                      controller2.clear();
+                      t1.clear();
+                      t2.clear();
                     },
-                    child: Text("/")),
+                    child: const Text("/")),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
               width: 8,
             ),
@@ -155,14 +153,14 @@ class _MyAppState extends State<MyApp> {
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6)),
-                        minimumSize: Size(138, 50)),
+                        minimumSize: const Size(138, 50)),
                     onPressed: () {
                       tambah();
-                      controller1.clear();
-                      controller2.clear();
+                      t1.clear();
+                      t2.clear();
                     },
-                    child: Text("+")),
-                SizedBox(
+                    child: const Text("+")),
+                const SizedBox(
                   height: 42,
                   width: 42,
                 ),
@@ -170,13 +168,13 @@ class _MyAppState extends State<MyApp> {
                     style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(6)),
-                        minimumSize: Size(138, 50)),
+                        minimumSize: const Size(138, 50)),
                     onPressed: () {
                       kurang();
-                      controller1.clear();
-                      controller2.clear();
+                      t1.clear();
+                      t2.clear();
                     },
-                    child: Text("-")),
+                    child: const Text("-")),
               ],
             )
           ],
